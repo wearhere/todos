@@ -37,7 +37,7 @@ function build() {
 function serveWeb(done) {
   nodemon({
     watch: 'src/server',
-    ext: 'js json html',
+    ext: 'js json html hbs',
     done,
   }).on('restart', () => {
     // When the server restarts, reload the client, for safety.
