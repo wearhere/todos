@@ -1,19 +1,17 @@
 const { dest, parallel, series, watch } = require('gulp');
 const livereloadServer = require('gulp-livereload');
 const nodemon = require('gulp-nodemon');
-const rollup = require('rollup-stream');
+const rollup = require('@rollup/stream');
+const rollupConfig = require('./rollup.config.js');
 const source = require('vinyl-source-stream');
 
 function build() {
-  return rollup({
-    input: 'src/client/main.js',
-    format: 'iife'
-  })
-  .pipe(source('bundle.js'))
-  .pipe(dest('./public'))
-  // TODO(jeff): Use `livereloadServer#changed` for more fine-grained reloading once we generate
-  // multiple bundles. See the comment in `src/server/index.js` too.
-  .pipe(livereloadServer());
+  return rollup(rollupConfig)
+    .pipe(source('bundle.js'))
+    .pipe(dest('./public'))
+    // TODO(jeff): Use `livereloadServer#changed` for more fine-grained reloading once we generate
+    // multiple bundles. See the comment in `src/server/index.js` too.
+    .pipe(livereloadServer());
 }
 
 function serve(done) {
