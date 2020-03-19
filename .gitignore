@@ -4,6 +4,9 @@ node_modules
 # Optional npm cache directory
 .npm
 
+# Built JS.
+public/bundle.js
+
 # Miscellaneous
 .DS_Store
 *.sublime-workspace
