@@ -10,7 +10,11 @@ function TodoList({ todos }) {
 
   return (
     <ol>
-      {todos.map((todo) => <TodoListItem key={todo.id || todo.cid} todo={todo}/>)}
+      {todos
+        .filter((todo) => !todo.get('completedAt'))
+        .map((todo) => {
+          return <TodoListItem key={todo.id || todo.cid} todo={todo}/>;
+        })}
     </ol>
   );
 }
