@@ -11,12 +11,16 @@
   "author": "Jeffrey Wear <jeffreywear@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "backbone-publication": "^1.0.12",
     "express": "^4.17.1",
     "express-hbs": "^2.3.1",
     "mongoist": "^2.5.1",
     "prop-types": "^15.7.2",
+    "publication-client": "^2.3.0",
+    "publication-server": "^1.9.2",
     "underscore": "^1.9.2",
-    "use-force-update": "^1.0.7"
+    "use-force-update": "^1.0.7",
+    "ws": "^2.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",

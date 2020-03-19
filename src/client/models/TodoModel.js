@@ -1,8 +1,6 @@
-import Backbone from 'backbone';
+import { PublicationModel } from 'backbone-publication';
 
-const TodoModel = Backbone.Model.extend({
-  idAttribute: '_id',
-
+const TodoModel = PublicationModel.extend({
   urlRoot: '/api/todos',
 
   defaults: {

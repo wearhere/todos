@@ -1,7 +1,7 @@
-import Backbone from 'backbone';
+import { PublicationCollection } from 'backbone-publication';
 import TodoModel from './TodoModel';
 
-const TodoCollection = Backbone.Collection.extend({
+const TodoCollection = PublicationCollection.extend({
   model: TodoModel
 });
 
