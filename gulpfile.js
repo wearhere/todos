@@ -2,11 +2,20 @@ const { dest, parallel, series, watch } = require('gulp');
 const livereloadServer = require('gulp-livereload');
 const nodemon = require('gulp-nodemon');
 const rollup = require('@rollup/stream');
-const rollupConfig = require('./rollup.config.js');
+const rollupConfig = require('./rollupConfig');
 const source = require('vinyl-source-stream');
 
+// Declare the cache variable outside of task scopes.
+// TODO(jeff): Determine whether this should be bundle-specific, if/when this project generates
+// multiple bundles.
+let cache;
+
 function build() {
-  return rollup(rollupConfig)
+  return rollup(rollupConfig({ cache }))
+    .on('bundle', (bundle) => {
+      // Update the cache after every new bundle is created
+      cache = bundle;
+    })
     .pipe(source('bundle.js'))
     .pipe(dest('./public'))
     // TODO(jeff): Use `livereloadServer#changed` for more fine-grained reloading once we generate
