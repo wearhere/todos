@@ -2,11 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TodoCollection from '../models/TodoCollection';
 import TodoListItem from './TodoListItem';
+import { useCollection } from '../helpers/useBackbone';
 
 function TodoList({ todos }) {
+  // Re-render when the collection's members, or their properties, change.
+  useCollection(todos);
+
   return (
     <ol>
-      {todos.map((todo) => <TodoListItem key={todo.id} todo={todo}/>)}
+      {todos.map((todo) => <TodoListItem key={todo.id || todo.cid} todo={todo}/>)}
     </ol>
   );
 }
