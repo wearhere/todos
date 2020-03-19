@@ -11,7 +11,7 @@ const globals = {
 
 module.exports = function({ cache }) {
   return {
-    input: 'src/client/main.js',
+    input: 'src/client/main.jsx',
     cache,
     output: {
       format: 'iife',
