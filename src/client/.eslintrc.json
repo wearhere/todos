@@ -1,0 +1,8 @@
+{
+  "extends": ["mixmax/browser", "mixmax/prettier"],
+  "settings": {
+    "react": {
+      "version": "latest"
+    }
+  }
+}

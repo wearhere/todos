@@ -6,7 +6,7 @@ const resolve = require('@rollup/plugin-node-resolve');
 const globals = {
   backbone: 'Backbone',
   react: 'React',
-  'react-dom': 'ReactDOM'
+  'react-dom': 'ReactDOM',
 };
 
 module.exports = function({ cache }) {
@@ -15,25 +15,25 @@ module.exports = function({ cache }) {
     cache,
     output: {
       format: 'iife',
-      globals
+      globals,
     },
     external: Object.keys(globals),
     plugins: [
       resolve({
         // Add support for importing JSX files without specifying their extension.
         // Example: `import TodoList from './components/TodoList';`
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
       }),
       babel({
         exclude: 'node_modules/**',
-        presets: ['@babel/preset-react']
+        presets: ['@babel/preset-react'],
       }),
       commonjs(),
       replace({
         // For the benefit of React.
         // TODO(jeff): Conditionalize this for production as appropriate.
-        'process.env.NODE_ENV': JSON.stringify('development')
-      })
-    ]
+        'process.env.NODE_ENV': JSON.stringify('development'),
+      }),
+    ],
   };
-}
+};

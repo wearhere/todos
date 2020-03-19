@@ -6,7 +6,7 @@
   "scripts": {
     "install": "brew tap mongodb/brew && brew install mongodb-community@4.2",
     "start": "gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint ."
   },
   "author": "Jeffrey Wear <jeffreywear@gmail.com>",
   "license": "MIT",
@@ -25,15 +25,19 @@
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
+    "@mixmaxhq/prettier-config": "^1.0.0",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@rollup/plugin-replace": "^2.3.1",
     "@rollup/stream": "^0.1.0",
     "connect-livereload": "^0.6.1",
+    "eslint": "^6.8.0",
+    "eslint-config-mixmax": "^4.9.0",
     "gulp": "^4.0.2",
     "gulp-livereload": "^4.0.2",
     "gulp-nodemon": "^2.5.0",
     "nocache": "^2.1.0",
+    "prettier": "^1.19.1",
     "rollup": "^1.20.3",
     "rollup-plugin-babel": "^4.4.0",
     "vinyl-source-stream": "^2.0.0"

@@ -13,7 +13,13 @@ require('./src/server/publicationServer')(webServer);
 // Bootstrap data before starting the app.
 // TODO(jeff): Move this to an install script so it doesn't slow load.
 bootstrapDB()
-  .catch((err) => console.log('Could not bootstrap DB:', err))
+  .catch((err) => {
+    // eslint-disable-next-line no-console
+    console.log('Could not bootstrap DB:', err);
+  })
   .finally(() => {
-    webServer.listen(PORT, () => console.log(`Web server listening on port ${PORT}`));
+    webServer.listen(PORT, () => {
+      // eslint-disable-next-line no-console
+      console.log(`Web server listening on port ${PORT}`);
+    });
   });

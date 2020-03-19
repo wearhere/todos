@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 const { dest, parallel, series, watch } = require('gulp');
 const livereloadServer = require('gulp-livereload');
 const { mkdir } = require('fs').promises;
@@ -19,25 +20,26 @@ const LIVERELOAD_PORT = 35729;
 let cache;
 
 function build() {
-  return rollup(rollupConfig({ cache }))
-    .on('bundle', (bundle) => {
-      // Update the cache after every new bundle is created
-      cache = bundle;
-    })
-    .pipe(source('bundle.js'))
-    .pipe(dest('./public'))
-    // TODO(jeff): Use `livereloadServer#changed` for more fine-grained reloading once we generate
-    // multiple bundles. See the comment in `src/server/index.js` too.
-    .pipe(livereloadServer());
+  return (
+    rollup(rollupConfig({ cache }))
+      .on('bundle', (bundle) => {
+        // Update the cache after every new bundle is created
+        cache = bundle;
+      })
+      .pipe(source('bundle.js'))
+      .pipe(dest('./public'))
+      // TODO(jeff): Use `livereloadServer#changed` for more fine-grained reloading once we generate
+      // multiple bundles. See the comment in `src/server/index.js` too.
+      .pipe(livereloadServer())
+  );
 }
 
 function serveWeb(done) {
   nodemon({
     watch: 'src/server',
     ext: 'js json html',
-    done
-  })
-  .on('restart', () => {
+    done,
+  }).on('restart', () => {
     // When the server restarts, reload the client, for safety.
     // HACK(jeff): Use a delay to make sure that the server is listening.
     setTimeout(() => livereloadServer.reload(), 1000);
@@ -48,10 +50,7 @@ async function serveDB() {
   // The recursive option suppresses errors if the directory already exists.
   await mkdir(MONGO_DB_DIR, { recursive: true });
 
-  const mongo = spawn('mongod', [
-    `--port=${MONGO_PORT}`,
-    `--dbpath=${MONGO_DB_DIR}`
-  ]);
+  const mongo = spawn('mongod', [`--port=${MONGO_PORT}`, `--dbpath=${MONGO_DB_DIR}`]);
 
   // Suppress stdout since it's noisy and probably not all that helpful.
   // TODO(jeff): Run Mongo under a process manager so that the developer can easily and separately
@@ -72,15 +71,12 @@ function livereload(done) {
   watch('src/client', build);
 
   livereloadServer.listen({
-    port: LIVERELOAD_PORT
+    port: LIVERELOAD_PORT,
   });
 
   done();
 }
 
 module.exports = {
-  default: series(
-    build,
-    parallel(serveWeb, serveDB, livereload)
-  )
+  default: series(build, parallel(serveWeb, serveDB, livereload)),
 };

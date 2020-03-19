@@ -15,7 +15,7 @@ export function useModel(model) {
   }, [model, update]);
 
   // Give the client easy access to the model's attributes.
-  return {...model.attributes};
+  return { ...model.attributes };
 }
 
 // TODO: Let the user customize the events observed, for instance to update on custom events.

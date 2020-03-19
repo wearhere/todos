@@ -8,7 +8,7 @@ module.exports = function(server) {
   if (publicationServer) throw new Error('Publication server has already been initialized!');
 
   publicationServer = new PublicationServer({
-    authFn: function(req, done) {
+    authFn(req, done) {
       // TODO(jeff): Real authentication lol.
       process.nextTick(done, null, testUserId);
     },
@@ -23,9 +23,10 @@ module.exports = function(server) {
     // Also note that we're using the latest ws@2.x rather than 3.x because we can't upgrade Primus
     // to fix https://github.com/primus/primus/issues/597 without forking publication-server.
     transformer: 'websockets',
-    errHandler: (err) => {
+    errHandler(err) {
+      // eslint-disable-next-line no-console
       console.error(`Publication server error: ${err}`);
-    }
+    },
   });
 
   publicationServer.publish('todos', todos);

@@ -35,5 +35,5 @@ module.exports = async function() {
   publication.onStop(() => {
     messageBus.off('todos:created', onAdded);
     messageBus.off('todos:updated', onChanged);
-  })
+  });
 };

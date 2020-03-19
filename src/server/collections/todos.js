@@ -4,7 +4,7 @@ const messageBus = require('../messageBus');
 
 async function find(userId) {
   return db.todos.find({
-    userId
+    userId,
   });
 }
 
@@ -19,12 +19,15 @@ async function create(userId, todo) {
 }
 
 async function update(userId, todo) {
-  const { nModified } = await db.todos.update({
-    _id: todo._id,
-    userId
-  }, {
-    $set: todo
-  });
+  const { nModified } = await db.todos.update(
+    {
+      _id: todo._id,
+      userId,
+    },
+    {
+      $set: todo,
+    }
+  );
 
   if (!nModified) throw new Error(`Todo with ID ${todo._id} not found`);
 
@@ -36,5 +39,5 @@ async function update(userId, todo) {
 module.exports = {
   find,
   create,
-  update
+  update,
 };

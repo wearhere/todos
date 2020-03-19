@@ -5,10 +5,9 @@ const mongoist = require('mongoist');
 const db = mongoist('mongodb://localhost:27017/app');
 
 (async function createIndexes() {
-  return Promise.all([
-    db.todos.createIndex({ userId: 1 })
-  ]);
+  return Promise.all([db.todos.createIndex({ userId: 1 })]);
 })().catch((err) => {
+  // eslint-disable-next-line no-console
   console.error('Could not create indexes:', err);
 });
 
