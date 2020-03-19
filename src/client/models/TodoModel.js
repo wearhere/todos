@@ -3,21 +3,17 @@ import Backbone from 'backbone';
 const TodoModel = Backbone.Model.extend({
   idAttribute: '_id',
 
+  urlRoot: '/api/todos',
+
   defaults: {
     _id: null,
     title: null,
     completedAt: null
   },
 
-  // Temporary override of save before the backend is in place.
-  // TODO(jeff): Remove this.
-  save() {
-    this.trigger('request');
-  },
-
   complete() {
-    // TODO(jeff): This should save instead.
-    this.set('completedAt', new Date());
+    // TODO(jeff): Error handling.
+    this.save('completedAt', new Date(), { patch: true });
   }
 });
 

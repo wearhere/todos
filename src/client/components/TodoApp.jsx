@@ -1,4 +1,5 @@
 import React, { Fragment, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 import TodoCollection from '../models/TodoCollection';
 import TodoModel from '../models/TodoModel';
@@ -8,16 +9,7 @@ import TodoList from './TodoList';
 
 import { useCollection } from '../helpers/useBackbone';
 
-// For testing purposes.
-const todos = new TodoCollection([{
-  _id: 'abc',
-  title: 'thing one'
-}, {
-  _id: 'def',
-  title: 'thing two'
-}]);
-
-function TodoApp() {
+function TodoApp({ todos }) {
   // Re-render when the collection's members, or their properties, change.
   // Necessary to refresh the todo editor (see `todos.get` below).
   useCollection(todos);
@@ -33,14 +25,12 @@ function TodoApp() {
       // When the user begins to save the todo, optimistically add it to the collection.
       // TODO(jeff): Consider how to key the tasks without IDs… also how to deduplicate with reactive
       // updates then.
-      todo.on('request', (...args) => {
-        // TODO(jeff): Only do on initial save.
-        console.log(args);
-        todos.add(todo);
+      todo.on('request', () => {
+        const isInitialSave = !todo.id;
+        if (isInitialSave) todos.add(todo);
       });
 
       // If the save fails, remove it from the collection and show an alert.
-      // TODO(jeff): Test this.
       todo.on('error', (...args) => {
         todos.remove(todo);
         alert(`Could not create todo "${todo.get('title')}". Please try again.`);
@@ -56,6 +46,10 @@ function TodoApp() {
       <TodoEditor todo={todoBeingEdited.current}/>
     </Fragment>
   );
+}
+
+TodoApp.propTypes = {
+  todos: PropTypes.instanceOf(TodoCollection).isRequired
 }
 
 export default TodoApp;

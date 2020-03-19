@@ -1,3 +1,4 @@
+const hbs = require('express-hbs');
 const livereload = require('connect-livereload');
 const express = require('express');
 const nocache = require('nocache');
@@ -21,6 +22,19 @@ app.use(nocache());
 // Example: `src="bundle.js"` => `public/bundle.js`.
 app.use(express.static('public'));
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+// Set up the view engine.
+app.engine('hbs', hbs.express4());
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'routes', 'views'));
+
+hbs.registerHelper('inlineData', function(data) {
+  return JSON.stringify(data);
+});
+
+// Parse JSON bodies.
+app.use(express.json());
+
+// Register all view and API routes.
+app.use(require('./routes'));
 
 module.exports = app;

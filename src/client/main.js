@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import TodoCollection from './models/TodoCollection';
+
 import TodoApp from './components/TodoApp';
 
-ReactDOM.render(<TodoApp/>, document.querySelector('#app'));
+const todos = new TodoCollection(window['initialPayload']['todos'] || []);
+
+ReactDOM.render(<TodoApp todos={todos}/>, document.querySelector('#app'));
