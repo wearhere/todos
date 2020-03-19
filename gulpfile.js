@@ -39,8 +39,8 @@ function serveWeb(done) {
   })
   .on('restart', () => {
     // When the server restarts, reload the client, for safety.
-    // HACK(jeff): Use a short delay to make sure that the server is listening.
-    setTimeout(() => livereloadServer.reload(), 100);;
+    // HACK(jeff): Use a delay to make sure that the server is listening.
+    setTimeout(() => livereloadServer.reload(), 1000);
   });
 }
 
