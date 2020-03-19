@@ -19,7 +19,7 @@ async function update(userId, todo) {
     $set: todo
   });
 
-  if (!nModified) throw new Error(`Todo with ID ${id} not found`);
+  if (!nModified) throw new Error(`Todo with ID ${todo._id} not found`);
 }
 
 module.exports = {

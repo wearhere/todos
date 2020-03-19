@@ -1,5 +1,6 @@
 const _ = require('underscore');
 const express = require('express');
+const { ObjectId } = require('mongoist');
 const router = express.Router();
 
 const Todos = require('../../collections/todos');
@@ -20,7 +21,7 @@ router.post('/', async function(req, res) {
 });
 
 router.patch('/:id', async function(req, res) {
-  const todo = _.extend(req.body, { _id: req.params.id });
+  const todo = _.extend(req.body, { _id: ObjectId(req.params.id) });
 
   await Todos.update(req.userId, todo);
 
