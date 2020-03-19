@@ -20,7 +20,7 @@ function TodoList({ todos }) {
 }
 
 TodoList.propTypes = {
-  todos: PropTypes.instanceOf(TodoCollection)
+  todos: PropTypes.instanceOf(TodoCollection).isRequired
 }
 
 export default TodoList;

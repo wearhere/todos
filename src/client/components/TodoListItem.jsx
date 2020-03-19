@@ -12,7 +12,7 @@ function TodoListItem({ todo }) {
 }
 
 TodoListItem.propTypes = {
-  todo: PropTypes.instanceOf(TodoModel)
+  todo: PropTypes.instanceOf(TodoModel).isRequired
 };
 
 export default TodoListItem;

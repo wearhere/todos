@@ -27,7 +27,7 @@ function TodoListEditor({ todo }) {
 }
 
 TodoListEditor.propTypes = {
-  todo: PropTypes.instanceOf(TodoModel)
+  todo: PropTypes.instanceOf(TodoModel).isRequired
 }
 
 export default TodoListEditor;
