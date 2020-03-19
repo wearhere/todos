@@ -3,6 +3,7 @@ const livereload = require('connect-livereload');
 const express = require('express');
 const nocache = require('nocache');
 const path = require('path');
+const testUserId = require('./db/testUserId');
 
 const app = express();
 
@@ -33,6 +34,13 @@ hbs.registerHelper('inlineData', function(data) {
 
 // Parse JSON bodies.
 app.use(express.json());
+
+// Set the user ID.
+// TODO(jeff): Real authentication lol.
+app.use((req, res, next) => {
+  req.userId = testUserId;
+  next();
+});
 
 // Register all view and API routes.
 app.use(require('./routes'));

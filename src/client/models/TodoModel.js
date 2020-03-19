@@ -7,6 +7,7 @@ const TodoModel = Backbone.Model.extend({
 
   defaults: {
     _id: null,
+    userId: null,
     title: null,
     completedAt: null
   },
