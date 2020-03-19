@@ -10,11 +10,13 @@
   "author": "Jeffrey Wear <jeffreywear@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
+    "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@rollup/plugin-replace": "^2.3.1",
     "@rollup/stream": "^0.1.0",

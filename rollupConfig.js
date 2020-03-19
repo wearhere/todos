@@ -1,6 +1,13 @@
 const babel = require('rollup-plugin-babel');
+const commonjs = require('@rollup/plugin-commonjs');
 const replace = require('@rollup/plugin-replace');
 const resolve = require('@rollup/plugin-node-resolve');
+
+const globals = {
+  backbone: 'Backbone',
+  react: 'React',
+  'react-dom': 'ReactDOM'
+};
 
 module.exports = function({ cache }) {
   return {
@@ -8,12 +15,9 @@ module.exports = function({ cache }) {
     cache,
     output: {
       format: 'iife',
-      globals: {
-        react: 'React',
-        'react-dom': 'ReactDOM'
-      }
+      globals
     },
-    external: ['react', 'react-dom'],
+    external: Object.keys(globals),
     plugins: [
       resolve({
         // Add support for importing JSX files without specifying their extension.
@@ -24,6 +28,7 @@ module.exports = function({ cache }) {
         exclude: 'node_modules/**',
         presets: ['@babel/preset-react']
       }),
+      commonjs(),
       replace({
         // For the benefit of React.
         // TODO(jeff): Conditionalize this for production as appropriate.
