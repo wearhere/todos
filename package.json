@@ -1,0 +1,12 @@
+{
+  "name": "todos",
+  "version": "0.0.1",
+  "description": "There are many todo apps but this one's mine.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeffrey Wear <jeffreywear@gmail.com>",
+  "license": "MIT"
+}
