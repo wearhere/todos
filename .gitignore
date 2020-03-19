@@ -10,3 +10,4 @@ public/bundle.js
 # Miscellaneous
 .DS_Store
 *.sublime-workspace
+/data
