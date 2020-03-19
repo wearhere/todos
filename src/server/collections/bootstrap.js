@@ -7,11 +7,9 @@ module.exports = async function bootstrapDB() {
   if (todosExist) return;
 
   await db.todos.insert([{
-    _id: 'abc',
     userId: testUserId,
     title: 'thing one'
   }, {
-    _id: 'def',
     userId: testUserId,
     title: 'thing two'
   }]);
