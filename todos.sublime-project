@@ -5,8 +5,7 @@
       "node_modules"
     ],
     "file_exclude_patterns": [
-      // Yarn lock file
-      "yarn.lock"
+      "public/bundle.js"
     ]
   }],
   "settings": {
