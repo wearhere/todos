@@ -13,14 +13,14 @@ function TodoList({ todos }) {
       {todos
         .filter((todo) => !todo.get('completedAt'))
         .map((todo) => {
-          return <TodoListItem key={todo.id || todo.cid} todo={todo}/>;
+          return <TodoListItem key={todo.id || todo.cid} todo={todo} />;
         })}
     </ol>
   );
 }
 
 TodoList.propTypes = {
-  todos: PropTypes.instanceOf(TodoCollection).isRequired
-}
+  todos: PropTypes.instanceOf(TodoCollection).isRequired,
+};
 
 export default TodoList;
