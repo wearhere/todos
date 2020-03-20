@@ -9,13 +9,13 @@ function TodoList({ todos }) {
   useCollection(todos);
 
   return (
-    <ol>
+    <ul>
       {todos
         .filter((todo) => !todo.get('completedAt'))
         .map((todo) => {
           return <TodoListItem key={todo.id || todo.cid} todo={todo} />;
         })}
-    </ol>
+    </ul>
   );
 }
 
