@@ -9,7 +9,7 @@ module.exports = function(server) {
 
   publicationServer = new PublicationServer({
     authFn(req, done) {
-      // TODO(jeff): Real authentication lol.
+      // TODO(jeff): Real authentication e.g. using cookies.
       process.nextTick(done, null, testUserId);
     },
     mountPath: '/ws',

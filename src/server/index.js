@@ -38,7 +38,7 @@ hbs.registerHelper('inlineData', function(data) {
 app.use(express.json());
 
 // Set the user ID.
-// TODO(jeff): Real authentication lol.
+// TODO(jeff): Real authentication e.g. using cookies.
 app.use((req, res, next) => {
   req.userId = testUserId;
   next();
