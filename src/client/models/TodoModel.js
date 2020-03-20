@@ -12,7 +12,7 @@ const TodoModel = PublicationModel.extend({
 
   complete() {
     // TODO(jeff): Error handling.
-    this.save('completedAt', new Date(), { patch: true });
+    this.save('completedAt', Date.now(), { patch: true });
   },
 });
 
