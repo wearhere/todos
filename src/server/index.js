@@ -30,6 +30,7 @@ app.engine('hbs', hbs.express4());
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'routes', 'views'));
 
+// Used to bootstrap JSON into view templates.
 hbs.registerHelper('inlineData', function(data) {
   return JSON.stringify(data);
 });
