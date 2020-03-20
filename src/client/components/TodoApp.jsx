@@ -7,13 +7,9 @@ import TodoModel from '../models/TodoModel';
 import TodoEditor from './TodoEditor';
 import TodoList from './TodoList';
 
-import { useModel, useCollection } from '../helpers/useBackbone';
+import { useModel } from '../helpers/useBackbone';
 
 function TodoApp({ todos }) {
-  // Re-render when the collection's members, or their properties, change.
-  // Necessary to refresh the todo editor (see `todos.get` below).
-  useCollection(todos);
-
   const todoBeingEdited = useRef(null);
 
   // Create a new task if this is our first time rendering or if the task has been saved to our
