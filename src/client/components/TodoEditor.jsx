@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import TodoModel from '../models/TodoModel';
 
@@ -20,14 +20,14 @@ function TodoListEditor({ todo }) {
 
   return (
     <form onSubmit={onSubmit}>
-      <input type="text" value={title || ''} onChange={onTitleChange}/>
-      <input type="submit" value="Add"/>
+      <input type='text' value={title || ''} onChange={onTitleChange} />
+      <input type='submit' value='Add' />
     </form>
   );
 }
 
 TodoListEditor.propTypes = {
-  todo: PropTypes.instanceOf(TodoModel).isRequired
-}
+  todo: PropTypes.instanceOf(TodoModel).isRequired,
+};
 
 export default TodoListEditor;
