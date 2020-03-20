@@ -9,6 +9,7 @@ function TodoListEditor({ todo }) {
     todo.set('title', e.target.value);
   }
 
+  // TODO(jeff): Prevent double clicks on this.
   function onSubmit(e) {
     e.preventDefault();
 
