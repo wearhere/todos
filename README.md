@@ -7,7 +7,7 @@ There are many "sample todo apps", but this one's mine. Project goals:
 a template for the app nor its build process
 * _reactive_: the frontend live-updates in response to changes made by other clients (see clip below)
 
-<iframe src="https://share.getcloudapp.com/d5u0DvYG?embed=true" width="724" height="262" style="border:none" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
+![](demo.gif)
 
 Non-goals:
 
