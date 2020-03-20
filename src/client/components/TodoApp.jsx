@@ -27,8 +27,8 @@ function TodoApp({ todos }) {
       // to add the todo. This prevents duplication, and should be fast enough locally.
       // TODO(jeff): In production, pass the CID through the server and dedupe on that.
       // todo.on('request', () => {
-        // const isInitialSave = !todo.id;
-        // if (isInitialSave) todos.add(todo);
+      //   const isInitialSave = !todo.id;
+      //   if (isInitialSave) todos.add(todo);
       // });
 
       // If the save fails, remove it from the collection and show an alert.
@@ -46,14 +46,14 @@ function TodoApp({ todos }) {
 
   return (
     <Fragment>
-      <TodoList todos={todos}/>
-      <TodoEditor todo={todoBeingEdited.current}/>
+      <TodoList todos={todos} />
+      <TodoEditor todo={todoBeingEdited.current} />
     </Fragment>
   );
 }
 
 TodoApp.propTypes = {
-  todos: PropTypes.instanceOf(TodoCollection).isRequired
-}
+  todos: PropTypes.instanceOf(TodoCollection).isRequired,
+};
 
 export default TodoApp;
