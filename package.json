@@ -18,7 +18,7 @@
     "prop-types": "^15.7.2",
     "publication-client": "^2.3.0",
     "publication-server": "^1.9.2",
-    "underscore": "^1.9.2",
+    "underscore": "^1.12.1",
     "use-force-update": "^1.0.7",
     "ws": "^2.3.1"
   },
